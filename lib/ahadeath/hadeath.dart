@@ -6,7 +6,7 @@ import 'package:islami/ahadeath/hadeath_name.dart';
 
 import 'hadeath_data.dart';
 import '../myThem.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class Hadeath extends StatefulWidget {
   @override
   State<Hadeath> createState() => _HadeathState();
@@ -32,7 +32,7 @@ class _HadeathState extends State<Hadeath> {
         Divider(thickness: 3,color: MyThem.primary,),
         Center(
           child: Text(
-            "Al Hadeth",
+            AppLocalizations.of(context)!.hadeath,
             style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: MyThem.accent,

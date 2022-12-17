@@ -4,9 +4,9 @@ import 'package:islami/ahadeath/hadeath.dart';
 import 'package:islami/al_quran/quran.dart';
 import 'package:islami/al_radio/radio.dart';
 import 'package:islami/al_sebha/sabha.dart';
-import 'package:islami/setting.dart';
+import 'package:islami/al_setting/setting.dart';
 import 'package:islami/al_quran/sura_name.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'myThem.dart';
 
 class Home extends StatefulWidget {
@@ -45,7 +45,8 @@ class _HomeState extends State<Home> {
           backgroundColor: Colors.transparent,
           title: Center(
             child: Text(
-              'islami',style: TextStyle(
+              AppLocalizations.of(context)!.islami,
+              style: TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.bold,
             ),
@@ -74,30 +75,30 @@ class _HomeState extends State<Home> {
                   icon: ImageIcon(
                     AssetImage("assets/images/icon_quran.png"),
                   ),
-                  label: "quran",
+                  label: AppLocalizations.of(context)!.quran,
 
               ),
               BottomNavigationBarItem(
                   icon: ImageIcon(
                     AssetImage("assets/images/icon_hadeth.png"),
                   ),
-                  label: "hadeath"
+                  label: AppLocalizations.of(context)!.hadeath
               ),
               BottomNavigationBarItem(
                   icon: ImageIcon(
                     AssetImage("assets/images/icon_sebha.png"),
                   ),
-                  label: "sebha"
+                  label: AppLocalizations.of(context)!.sebha
               ),
               BottomNavigationBarItem(
                   icon: ImageIcon(
                     AssetImage("assets/images/icon_radio.png"),
                   ),
-                  label: "radio"
+                  label: AppLocalizations.of(context)!.radio
               ),
               BottomNavigationBarItem(
                   icon: Icon(Icons.settings),
-                  label: "setting"
+                  label: AppLocalizations.of(context)!.setting
               ),
             ],
 

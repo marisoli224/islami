@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:islami/myThem.dart';
 import 'package:islami/al_quran/sura_name.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class Quran extends StatelessWidget {
 
 static String routName = "quran";
@@ -29,7 +29,7 @@ List<String> names = ["الفاتحه","البقرة","آل عمران","الن�
             Divider(thickness: 3,color: MyThem.primary,),
             Center(
               child: Text(
-                "sura name",
+                AppLocalizations.of(context)!.sura_name,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: MyThem.accent,

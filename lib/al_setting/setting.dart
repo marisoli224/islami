@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:islami/myBottonSheet.dart';
-
-import 'myThem.dart';
+import 'package:islami/al_setting/myBottonSheet.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../myThem.dart';
 
 class Setting extends StatefulWidget {
 
@@ -19,7 +19,7 @@ class _SettingState extends State<Setting> {
       child: Column(
         children: [
           Text(
-            "language",
+           AppLocalizations.of(context)!.language,
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 20,
@@ -43,7 +43,7 @@ class _SettingState extends State<Setting> {
                   Icon(Icons.arrow_downward,color: MyThem.primary),
                   Spacer(),
                   Text(
-                    "English",
+                    AppLocalizations.of(context)!.english,
                     style: TextStyle(
                       color:  MyThem.primary,
                       fontWeight: FontWeight.bold,
@@ -58,7 +58,7 @@ class _SettingState extends State<Setting> {
             height: 20,
           ),
           Text(
-            "Theme",
+            AppLocalizations.of(context)!.theme,
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 20,
@@ -82,7 +82,7 @@ class _SettingState extends State<Setting> {
                   Icon(Icons.arrow_downward,color: MyThem.primary),
                   Spacer(),
                   Text(
-                    "Light",
+                    AppLocalizations.of(context)!.light,
                     style: TextStyle(
                       color:  MyThem.primary,
                       fontWeight: FontWeight.bold,
@@ -101,7 +101,7 @@ class _SettingState extends State<Setting> {
 
   void showThemeButtonSheet() {
     showModalBottomSheet(context: context, builder: (context){
-      return MyButtonSheet(item1: "Light",item2: "Dark",);
+      return MyButtonSheet(item1: AppLocalizations.of(context)!.light,item2: AppLocalizations.of(context)!.dark,);
     });
   }
 
