@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:islami/ahadeath/hadeath.dart';
 import 'package:islami/al_quran/quran.dart';
-import 'package:islami/radio.dart';
-import 'package:islami/sabha.dart';
+import 'package:islami/al_radio/radio.dart';
+import 'package:islami/al_sebha/sabha.dart';
 import 'package:islami/setting.dart';
 import 'package:islami/al_quran/sura_name.dart';
 
