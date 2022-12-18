@@ -23,7 +23,7 @@ class MyButtonSheetTheme extends StatelessWidget {
           child: Text(
             item1,
             style: TextStyle(
-              color: provider.currentTheme == ThemeMode.light? MyThem.primary : MyThem.accentDark ,
+              color: provider.currentTheme == ThemeMode.light? Colors.blue : Colors.black ,
               fontWeight: FontWeight.bold,
               fontSize: 20,
             ),
@@ -39,7 +39,7 @@ class MyButtonSheetTheme extends StatelessWidget {
           child: Text(
             item2,
             style: TextStyle(
-              color:  provider.currentTheme == ThemeMode.light? MyThem.primary : MyThem.accentDark,
+              color:  provider.currentTheme == ThemeMode.dark?  Colors.blue : Colors.black ,
               fontWeight: FontWeight.bold,
               fontSize: 20,
             ),
