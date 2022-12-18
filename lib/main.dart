@@ -4,16 +4,24 @@ import 'package:islami/al_quran/al_soura.dart';
 import 'package:islami/home.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:islami/myThem.dart';
+import 'package:islami/setting_provider.dart';
+import 'package:provider/provider.dart';
 void main() {
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+
+      create: (BuildContext context) => SettingProvider(),
+      child:  MyApp()));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
 
 
+late SettingProvider provider ;
   @override
   Widget build(BuildContext context) {
+ provider = Provider.of(context);
+
     return MaterialApp(
 
         supportedLocales: [
@@ -29,11 +37,15 @@ class MyApp extends StatelessWidget {
           GlobalCupertinoLocalizations.delegate,
         ],
 
-      locale: Locale("en"),
+      locale: Locale(provider.currentLocal),
 
-      theme: ThemeData(
 
-      ),
+      theme: MyThem.lightTheme,
+      darkTheme: MyThem.darkTheme,
+      themeMode: provider.currentTheme,
+
+
+
       initialRoute: Home.routName,
 
       routes:

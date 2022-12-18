@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islami/ahadeath/hadeathText.dart';
 import 'package:islami/ahadeath/hadeath_name.dart';
+import 'package:provider/provider.dart';
 
+import '../setting_provider.dart';
 import 'hadeath_data.dart';
 import '../myThem.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -21,6 +23,7 @@ class _HadeathState extends State<Hadeath> {
 
   @override
   Widget build(BuildContext context) {
+    SettingProvider provider = Provider.of(context);
     if (content.isEmpty){
         readFile(fileName);
     }
@@ -29,19 +32,19 @@ class _HadeathState extends State<Hadeath> {
       children: [
         Expanded(
             child: Image(image: AssetImage("assets/images/hadeth_logo.png"))),
-        Divider(thickness: 3,color: MyThem.primary,),
+        Divider(thickness: 3,color: provider.currentTheme == ThemeMode.light? MyThem.primary : MyThem.accentDark,),
         Center(
           child: Text(
             AppLocalizations.of(context)!.hadeath,
             style: TextStyle(
                 fontWeight: FontWeight.bold,
-                color: MyThem.accent,
+                color: provider.currentTheme == ThemeMode.light? MyThem.primary : MyThem.accentDark,
                 fontSize: 25
             ),
           ),
         ),
 
-        Divider(thickness: 3,color: MyThem.primary,),
+        Divider(thickness: 3,color: provider.currentTheme == ThemeMode.light? MyThem.primary : MyThem.accentDark,),
         Expanded(
             flex: 3,
             child: ListView.builder(

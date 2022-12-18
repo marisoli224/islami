@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../myThem.dart';
+import '../setting_provider.dart';
 
 class MyButtonSheet extends StatelessWidget {
 
@@ -10,25 +13,35 @@ class MyButtonSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SettingProvider provider = Provider.of(context);
     return Column(
      children: [
-       Text(
-         item1,
-         style: TextStyle(
-           color:  MyThem.primary,
-           fontWeight: FontWeight.bold,
-           fontSize: 20,
+       InkWell(
+         onTap: (){
+           provider.changeCurrentLocal("ar");
+         },
+         child: Text(   item1,
+           style: TextStyle(
+             color:  provider.currentTheme == ThemeMode.light? MyThem.primary : MyThem.accentDark,
+             fontWeight: FontWeight.bold,
+             fontSize: 20,
+           ),
          ),
        ),
        SizedBox(
          height: 20,
        ),
-       Text(
-         item2,
-         style: TextStyle(
-           color:  MyThem.primary,
-           fontWeight: FontWeight.bold,
-           fontSize: 20,
+       InkWell(
+         onTap: (){
+    provider.changeCurrentLocal("en");
+    },
+         child: Text(
+           item2,
+           style: TextStyle(
+             color: provider.currentTheme == ThemeMode.light? MyThem.primary : MyThem.accentDark ,
+             fontWeight: FontWeight.bold,
+             fontSize: 20,
+           ),
          ),
        ),
      ],

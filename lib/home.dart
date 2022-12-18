@@ -7,6 +7,8 @@ import 'package:islami/al_sebha/sabha.dart';
 import 'package:islami/al_setting/setting.dart';
 import 'package:islami/al_quran/sura_name.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:islami/setting_provider.dart';
+import 'package:provider/provider.dart';
 import 'myThem.dart';
 
 class Home extends StatefulWidget {
@@ -30,10 +32,14 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    SettingProvider provider = Provider.of(context);
     return  Container(
-        decoration: const BoxDecoration(
+        decoration:  BoxDecoration(
         image: DecorationImage(
-        image: AssetImage("assets/images/default_bg.png",),
+        image: AssetImage(
+          (provider.currentTheme == ThemeMode.light)?
+          "assets/images/default_bg.png"
+          : "assets/images/dark_bg.png",),
     fit: BoxFit.fill,
     ),
 
@@ -47,7 +53,7 @@ class _HomeState extends State<Home> {
             child: Text(
               AppLocalizations.of(context)!.islami,
               style: TextStyle(
-              color: Colors.black,
+              color: provider.currentTheme == ThemeMode.light? Colors.black: Colors.white,
               fontWeight: FontWeight.bold,
             ),
             ),
@@ -57,10 +63,10 @@ class _HomeState extends State<Home> {
         bottomNavigationBar: Theme(
 
           data: Theme.of(context).copyWith(
-              canvasColor: MyThem.primary
+              canvasColor: provider.currentTheme == ThemeMode.light? MyThem.primary : MyThem.accentDark
           ),
           child: BottomNavigationBar(
-            selectedItemColor: MyThem.accent,
+            selectedItemColor: provider.currentTheme == ThemeMode.light? Colors.black: Colors.white,
              currentIndex: index,
             onTap: (clicked){
               index = clicked;

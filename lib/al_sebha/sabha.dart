@@ -2,6 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:islami/myThem.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
+
+import '../setting_provider.dart';
 class Sebha extends StatefulWidget {
 
   @override
@@ -19,6 +22,7 @@ List<String> zikr = [
 ];
   @override
   Widget build(BuildContext context) {
+    SettingProvider provider = Provider.of(context);
     return Container(
      width: double.infinity,
 
@@ -57,6 +61,7 @@ List<String> zikr = [
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 30,
+                color:provider.currentTheme == ThemeMode.light? Colors.black: Colors.white,
               ),
             ),
             SizedBox(
@@ -68,13 +73,14 @@ List<String> zikr = [
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(25),
-                color: MyThem.primary,
+                color: provider.currentTheme == ThemeMode.light? MyThem.primary : MyThem.accentDark,
               ),
               child: Text(
                 "$count",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 25,
+                  color:provider.currentTheme == ThemeMode.light? Colors.black: Colors.white,
                 ),
               ),
             ),
@@ -87,7 +93,7 @@ List<String> zikr = [
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(25),
-                color: MyThem.primary,
+                color: provider.currentTheme == ThemeMode.light? MyThem.primary : MyThem.accentDark,
               ),
               child: Text(
                zikr[currentIndex],

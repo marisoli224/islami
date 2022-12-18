@@ -2,8 +2,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islami/al_quran/soura_data.dart';
+import 'package:provider/provider.dart';
 
 import '../myThem.dart';
+import '../setting_provider.dart';
 
 class AlSoura extends StatefulWidget {
   static String routName = "alsoura";
@@ -17,14 +19,15 @@ class _AlSouraState extends State<AlSoura> {
 List<String> ayah = [];
   @override
   Widget build(BuildContext context) {
+    SettingProvider provider = Provider.of(context);
     var args = ModalRoute.of(context)?.settings.arguments as SuraDta;
     if (ayah.isEmpty) {
       readFile(args.fileName);
     }
     return Container(
-      decoration: const BoxDecoration(
+      decoration:  BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("assets/images/default_bg.png",),
+          image: AssetImage(provider.currentTheme == ThemeMode.light?"assets/images/default_bg.png":"assets/images/dark_bg.png",),
           fit: BoxFit.fill,
         ),
 
@@ -38,7 +41,7 @@ List<String> ayah = [];
             child: Text(
               args.suraName,
               style: TextStyle(
-              color: Colors.black,
+              color:  provider.currentTheme == ThemeMode.light? Colors.black : MyThem.accentDark,
               fontWeight: FontWeight.bold,
             ),
             ),
@@ -54,9 +57,10 @@ List<String> ayah = [];
                   "${ ayah[index]}{${index+1}}"
                  ,
               style: TextStyle(
-                fontWeight: FontWeight.w700
+                fontWeight: FontWeight.w700,
+                color:  provider.currentTheme == ThemeMode.light? Colors.black : MyThem.accentDark,
               )),
-              Divider(thickness: 1,color: MyThem.primary,),
+              Divider(thickness: 1,color:provider.currentTheme == ThemeMode.light? MyThem.primary : MyThem.accentDark, ),
             ],
           );
         })

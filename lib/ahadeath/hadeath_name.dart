@@ -2,8 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:islami/ahadeath/hadeathText.dart';
 import 'package:islami/ahadeath/hadeath_data.dart';
+import 'package:provider/provider.dart';
 
 import '../myThem.dart';
+import '../setting_provider.dart';
 
 class HadeathName extends StatelessWidget {
   HadeathData itemHadeath;
@@ -12,7 +14,7 @@ class HadeathName extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
+    SettingProvider provider = Provider.of(context);
     return InkWell(
       onTap: (){
         Navigator.pushNamed(context,
@@ -26,7 +28,7 @@ class HadeathName extends StatelessWidget {
           child: Text(
            itemHadeath.hadeathName,
             style: TextStyle(
-              color: MyThem.accent,
+              color: provider.currentTheme == ThemeMode.light? Colors.black: Colors.white,
               fontSize: 20,
               fontWeight: FontWeight.bold,
 

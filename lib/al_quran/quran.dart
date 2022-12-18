@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:islami/myThem.dart';
 import 'package:islami/al_quran/sura_name.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
+
+import '../setting_provider.dart';
 class Quran extends StatelessWidget {
 
 static String routName = "quran";
@@ -21,24 +24,25 @@ List<String> names = ["الفاتحه","البقرة","آل عمران","الن�
 
   @override
   Widget build(BuildContext context) {
+    SettingProvider provider = Provider.of(context);
     return  Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
            Expanded(
                child: Image(image: AssetImage("assets/images/qur2an_screen_logo.png"))),
-            Divider(thickness: 3,color: MyThem.primary,),
+            Divider(thickness: 3,color:provider.currentTheme == ThemeMode.light? MyThem.primary : MyThem.accentDark,),
             Center(
               child: Text(
                 AppLocalizations.of(context)!.sura_name,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  color: MyThem.accent,
+                  color: provider.currentTheme == ThemeMode.light? MyThem.primary : MyThem.accentDark,
                   fontSize: 25
                 ),
               ),
             ),
 
-            Divider(thickness: 3,color: MyThem.primary,),
+            Divider(thickness: 3,color: provider.currentTheme == ThemeMode.light? MyThem.primary : MyThem.accentDark,),
             Expanded(
               flex: 3,
                 child: ListView.builder(
